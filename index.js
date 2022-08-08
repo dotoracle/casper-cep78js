@@ -266,7 +266,7 @@ const CEP78 = class {
       });
     }
 
-    return await contractClient.contractCall({
+    return await this.contractClient.contractCall({
       entryPoint: "approve",
       keys: keys,
       paymentAmount: paymentAmount ? paymentAmount : "1000000000",
@@ -282,7 +282,7 @@ const CEP78 = class {
       operator: key,
     });
 
-    return await contractClient.contractCall({
+    return await this.contractClient.contractCall({
       entryPoint: "set_approval_for_all",
       keys: keys,
       paymentAmount: paymentAmount ? paymentAmount : "1000000000",
@@ -306,7 +306,7 @@ const CEP78 = class {
       });
     }
 
-    return await contractClient.contractCall({
+    return await this.contractClient.contractCall({
       entryPoint: "burn",
       keys: keys,
       paymentAmount: paymentAmount ? paymentAmount : "1000000000",
@@ -334,7 +334,7 @@ const CEP78 = class {
       });
     }
 
-    return await contractClient.contractCall({
+    return await this.contractClient.contractCall({
       entryPoint: "transfer",
       keys: keys,
       paymentAmount: paymentAmount ? paymentAmount : "1000000000",
