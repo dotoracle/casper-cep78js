@@ -5,16 +5,9 @@ const {
 } = require("casper-js-client-helper");
 const { DEFAULT_TTL } = require("casper-js-client-helper/dist/constants");
 
-const {
-  CLValueBuilder,
-  RuntimeArgs,
-} = require("casper-js-sdk");
+const { CLValueBuilder, RuntimeArgs } = require("casper-js-sdk");
 
-const {
-  setClient,
-  contractSimpleGetter,
-  createRecipientAddress,
-} = helpers;
+const { setClient, contractSimpleGetter, createRecipientAddress } = helpers;
 
 const CEP78 = class {
   constructor(contractHash, nodeAddress, chainName) {
@@ -218,12 +211,12 @@ const CEP78 = class {
       let key = createRecipientAddress(account);
       itemKey = Buffer.from(key.data.data).toString("hex");
     }
-    return itemKey
+    return itemKey;
   }
 
   async getOwnedTokens(account) {
     try {
-      let itemKey = CEP78.getAccountItemKey(account)
+      let itemKey = CEP78.getAccountItemKey(account);
       const result = await utils.contractDictionaryGetter(
         this.nodeAddress,
         itemKey,
@@ -237,7 +230,7 @@ const CEP78 = class {
 
   async balanceOf(account) {
     try {
-      let itemKey = CEP78.getAccountItemKey(account)
+      let itemKey = CEP78.getAccountItemKey(account);
       const result = await utils.contractDictionaryGetter(
         this.nodeAddress,
         itemKey,
@@ -260,11 +253,12 @@ const CEP78 = class {
         operator: key,
       });
     } else {
-      RuntimeArgs.fromMap({
+      runtimeArgs = RuntimeArgs.fromMap({
         token_hash: CLValueBuilder.string(tokenId),
         operator: key,
       });
     }
+    console.log('runtimeArgs', runtimeArgs)
 
     return await this.contractClient.contractCall({
       entryPoint: "approve",
@@ -301,7 +295,7 @@ const CEP78 = class {
         token_id: CLValueBuilder.u64(parseInt(tokenId)),
       });
     } else {
-      RuntimeArgs.fromMap({
+      runtimeArgs = RuntimeArgs.fromMap({
         token_hash: CLValueBuilder.string(tokenId),
       });
     }
@@ -324,13 +318,13 @@ const CEP78 = class {
       runtimeArgs = RuntimeArgs.fromMap({
         token_id: CLValueBuilder.u64(parseInt(tokenId)),
         source_key: createRecipientAddress(source),
-        target_key: createRecipientAddress(recipient)
+        target_key: createRecipientAddress(recipient),
       });
     } else {
-      RuntimeArgs.fromMap({
+      runtimeArgs = RuntimeArgs.fromMap({
         token_hash: CLValueBuilder.string(tokenId),
         source_key: createRecipientAddress(source),
-        target_key: createRecipientAddress(recipient)
+        target_key: createRecipientAddress(recipient),
       });
     }
 
