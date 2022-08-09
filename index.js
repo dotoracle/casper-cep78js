@@ -44,10 +44,10 @@ const CEP78 = class {
       ]
     );
     this.contractPackageHash = contractPackageHash;
-    this.contractClient.chainName = this.chainName;
-    this.contractClient.contractHash = this.contractHash;
-    this.contractClient.contractPackageHash = this.contractPackageHash;
-    this.contractClient.nodeAddress = this.nodeAddress;
+    this.contractClient.chainName = this.chainName
+    this.contractClient.contractHash = this.contractHash
+    this.contractClient.contractPackageHash = this.contractPackageHash
+    this.contractClient.nodeAddress = this.nodeAddress
     /* @ts-ignore */
     this.namedKeys = namedKeys;
   }
